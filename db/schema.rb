@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171208003203) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -101,6 +102,13 @@ ActiveRecord::Schema.define(version: 20171208003203) do
     t.string   "auto_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "outreaches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "lead_id"
+
   end
 
   add_foreign_key "events", "leads"
