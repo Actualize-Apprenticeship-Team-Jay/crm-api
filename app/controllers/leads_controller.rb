@@ -107,8 +107,19 @@ class LeadsController < ApplicationController
       to: params[:phone],
       body: params[:body]
     )
-
     render nothing: true
+  end
+
+  def autotext
+    @lead = Lead.find(params[:id])
+    @client = Twilio::REST::Client.new
+    @client.messages.create(
+        from: ENV['TWILIO_PHONE_NUMBER'],
+        to: @lead.phone,
+        body: "Hi, #{@lead.first_name.split(" ").first}! This is Rena from the Actualize coding bootcamp. Do you have a minute to talk?"
+    )
+    flash[:success] = "Auto text sent!"
+    redirect_to "/leads/#{params[:id]}/edit"
   end
 
   def no_leads
