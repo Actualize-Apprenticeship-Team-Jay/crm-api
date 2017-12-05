@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20171208003203) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "lead_id"
+    t.string   "event"
 
   end
 
