@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   post '/voice' => 'leads#voice'
   post '/text' => 'leads#text'
   post '/autotext' => 'leads#autotext'
-
+  get '/settings/edit' => 'settings#edit'
+  patch '/settings' => 'settings#update'
   get '/daily_logs' => 'daily_progress_logs#index'
 
   post '/incoming_voice' => 'webhooks#incoming_voice'

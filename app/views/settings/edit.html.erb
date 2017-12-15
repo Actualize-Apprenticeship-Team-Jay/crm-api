@@ -1,0 +1,9 @@
+<h3>Settings</h3>
+
+<%= form_tag "/settings", method: :patch do %>
+  <div>
+    <p>Auto-Text Message:</p> <input type="text" name="auto_text" value="<%= @auto_text %>">
+  </div>
+
+  <input type="submit" value="Save">
+<%end%>
