@@ -16,6 +16,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     methods: {
       moment: function(date) {
         return moment(date);
+      },
+      showHistory: function(lead) {
+        lead.visible = true;
+        console.log(lead);
+      },
+      isVisible: function(lead) {
+        console.log(lead.visible);
+        return lead.visible;
       }
     },
     computed: {
