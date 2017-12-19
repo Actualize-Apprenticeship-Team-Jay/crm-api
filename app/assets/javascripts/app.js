@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       $.get('/api/v1/leads.json').success(function(response) {
         console.log(this);
         this.leads = response;
+        this.leads.map(function(lead){
+          app.$set(lead, 'visible', false);
+        });
       }.bind(this));
     },
     methods: {
@@ -22,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         console.log(lead);
       },
       isVisible: function(lead) {
-        console.log(lead.visible);
         return lead.visible;
       }
     },
