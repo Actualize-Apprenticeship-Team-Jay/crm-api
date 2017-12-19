@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       },
       showHistory: function(lead) {
         lead.visible = true;
-        console.log(lead);
       },
       isVisible: function(lead) {
         return lead.visible;
