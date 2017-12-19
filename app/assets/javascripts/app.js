@@ -11,11 +11,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
       $.get('/api/v1/leads.json').success(function(response) {
         console.log(this);
         this.leads = response;
+        this.leads.map(function(lead){
+          app.$set(lead, 'visible', false);
+        });
       }.bind(this));
     },
     methods: {
       moment: function(date) {
         return moment(date);
+      },
+      showHistory: function(lead) {
+        lead.visible = true;
+      },
+      isVisible: function(lead) {
+        return lead.visible;
       }
     },
     computed: {
