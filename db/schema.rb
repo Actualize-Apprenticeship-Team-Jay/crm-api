@@ -103,5 +103,20 @@ ActiveRecord::Schema.define(version: 20171208003203) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "outreaches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "lead_id"
+    t.string   "event"
+
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.integer  "admin_id"
+    t.string   "auto_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "events", "leads"
 end

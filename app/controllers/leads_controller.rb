@@ -52,6 +52,12 @@ class LeadsController < ApplicationController
 
   def update
     @lead = Lead.find_by(id: params[:id])
+
+    outreach = Outreach.create(
+                                event: params[:event],
+                                lead_id: @lead.id
+                                )
+
     if @lead.update(lead_params)    
       flash[:success] = "Lead saved!"
       redirect_to '/'
@@ -59,6 +65,9 @@ class LeadsController < ApplicationController
       flash[:error] = "ERROR: We could not update this lead."
       render :next
     end
+
+    
+
   end
 
   # This action is called by Twilio when preparing to make outbound voice calls
@@ -128,6 +137,6 @@ class LeadsController < ApplicationController
   private
 
   def lead_params
-    params.require(:lead).permit(:first_name, :last_name, :email, :phone, :city, :state, :zip, :contacted, :appointment_date, :notes, :connected, :bad_number, :advisor, :location, :first_appointment_set, :first_appointment_actual, :first_appointment_format, :second_appointment_set, :second_appointment_actual, :second_appointment_format, :enrolled_date, :deposit_date, :sales, :collected, :status, :next_step, :rep_notes, :exclude_from_calling, :meeting_type, :meeting_format)
+    params.require(:lead).permit(:first_name, :last_name, :email, :phone, :city, :state, :zip, :contacted, :appointment_date, :notes, :connected, :bad_number, :advisor, :location, :first_appointment_set, :first_appointment_actual, :first_appointment_format, :second_appointment_set, :second_appointment_actual, :second_appointment_format, :enrolled_date, :deposit_date, :sales, :collected, :status, :next_step, :rep_notes, :exclude_from_calling, :meeting_type, :meeting_format, outreaches_attributes: [:event])
   end
 end
